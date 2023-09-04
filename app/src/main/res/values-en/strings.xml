@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cibertec App</string>
+
+    <!-- Login -->
+    <string name="edt_email">Email</string>
+    <string name="edt_pass">Password</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_register">REGISTER</string>
+
+    <string name="edt_name">Name</string>
+    <string name="edt_lastname">Lastname</string>
+    <string name="edt_repeat_pass">Pass again</string>
+
+    <string name="text_welcome">Welcome</string>
+</resources>
