@@ -14,4 +14,6 @@
 
     <!-- Welcome -->
     <string name="text_welcome">Bienvenido</string>
+
+    <string name="text_android">Curso de Android</string>
 </resources>

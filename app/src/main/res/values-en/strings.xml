@@ -13,4 +13,6 @@
     <string name="edt_repeat_pass">Pass again</string>
 
     <string name="text_welcome">Welcome</string>
+
+    <string name="text_android">Curso de Android</string>
 </resources>
