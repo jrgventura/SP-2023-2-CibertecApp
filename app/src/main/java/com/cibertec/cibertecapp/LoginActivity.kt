@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -26,7 +27,7 @@ class LoginActivity: AppCompatActivity() {
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         btnLogin.setOnClickListener {
             // startActivity(Intent(this, MainActivity::class.java))
-            alertWithMultipleChoiceList()
+            alertWithDesignCustom()
         }
 
     }
@@ -160,5 +161,28 @@ class LoginActivity: AppCompatActivity() {
             }
             show()
         }
+    }
+
+    fun alertWithDesignCustom() {
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Alerta con Diseño Personalizado")
+
+        val inflater = layoutInflater
+        val dialogLayout = inflater.inflate(R.layout.dialog_note, null)
+        builder.setView(dialogLayout)
+
+        val edtTitle = dialogLayout.findViewById<EditText>(R.id.edtTitleNote)
+        val btnCreate = dialogLayout.findViewById<Button>(R.id.btnCreate)
+
+        val mAlertDialog = builder.show()
+
+        btnCreate.setOnClickListener {
+            val title = edtTitle.text.toString()
+            Toast.makeText(applicationContext, title, Toast.LENGTH_LONG).show()
+
+            mAlertDialog.dismiss()
+        }
+
     }
 }
