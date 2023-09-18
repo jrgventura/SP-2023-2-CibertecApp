@@ -26,8 +26,7 @@ class LoginActivity: AppCompatActivity() {
 
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         btnLogin.setOnClickListener {
-            // startActivity(Intent(this, MainActivity::class.java))
-            alertWithDesignCustom()
+            startActivity(Intent(this, WelcomeActivity::class.java))
         }
 
     }
