@@ -137,7 +137,9 @@ class LoginActivity: AppCompatActivity() {
     fun alertWithMultipleChoiceList() {
         val items = arrayOf("Java", "Kotlin", "Swift", "C++", "C#")
         val selectedList = ArrayList<Int>()
+
         var builder = AlertDialog.Builder(this)
+
         with(builder) {
             setTitle("Lista de lenguajes")
             setMultiChoiceItems(items, null) { dialog, index, state ->
@@ -179,7 +181,7 @@ class LoginActivity: AppCompatActivity() {
 
         btnCreate.setOnClickListener {
             val title = edtTitle.text.toString()
-            Toast.makeText(applicationContext, title, Toast.LENGTH_LONG).show()
+            Toast.makeText(this, title, Toast.LENGTH_LONG).show()
 
             mAlertDialog.dismiss()
         }
