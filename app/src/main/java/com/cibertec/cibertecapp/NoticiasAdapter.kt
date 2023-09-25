@@ -4,8 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class NoticiasAdapter(val list: List<Noticia>):
+class NoticiasAdapter(val mItemClickListener: ItemClickNoticia):
     RecyclerView.Adapter<NoticiasViewHolder>() {
+
+    private var noticiasList = emptyList<Noticia>()
+
+    fun setNoticias(noticias: List<Noticia>) {
+        this.noticiasList = noticias
+        this.notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             NoticiasViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -13,12 +21,21 @@ class NoticiasAdapter(val list: List<Noticia>):
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return noticiasList.size
     }
 
     override fun onBindViewHolder(holder: NoticiasViewHolder, position: Int) {
-        val noticia: Noticia = list[position]
+        val noticia: Noticia = noticiasList[position]
         holder.bind(noticia)
+
+        holder.itemView.setOnClickListener {
+            mItemClickListener.onItemClick(noticia)
+        }
+    }
+
+    // Evento
+    interface ItemClickNoticia {
+        fun onItemClick(noticia: Noticia)
     }
 
 
