@@ -1,5 +1,6 @@
 package com.cibertec.cibertecapp.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -18,5 +19,5 @@ interface NotaDao {
     fun delete(nota: Nota)
 
     @Query("SELECT * FROM note_table ORDER BY date_note DESC")
-    fun list(): List<Nota>
+    fun list(): LiveData<List<Nota>>
 }
