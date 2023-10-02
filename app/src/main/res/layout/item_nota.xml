@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textNoteDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="02/10/2023 15:00"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:textColor="@color/blue"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+
+        <TextView
+            android:id="@+id/textNoteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:maxLines="1"
+            android:textSize="16sp"
+            android:text="Contenido Noticia"/>
+
+        <TextView
+            android:id="@+id/textNoteDecription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:text="Contenido Noticia"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

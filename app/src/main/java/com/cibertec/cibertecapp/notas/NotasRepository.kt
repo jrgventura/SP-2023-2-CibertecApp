@@ -13,7 +13,6 @@ class NotasRepository (application: Application) {
     private val noteDao: NotaDao? =
         CibertecRoomDatabase.getInstance(application)?.noteDao()
 
-
     suspend fun insertNotaWithCoroutines(nota: Nota) {
         processInsertNote(nota)
     }
