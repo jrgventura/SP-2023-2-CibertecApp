@@ -18,4 +18,10 @@ class NotasViewModel (application: Application): AndroidViewModel(application) {
         }
     }
 
+    fun upateNoteWithCoroutines(nota: Nota) {
+        viewModelScope.launch {
+            repository.updateNotaWithCoroutines(nota)
+        }
+    }
+
 }

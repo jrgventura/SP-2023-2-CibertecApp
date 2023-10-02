@@ -23,6 +23,16 @@ class NotasRepository (application: Application) {
         }
     }
 
+    suspend fun updateNotaWithCoroutines(nota: Nota) {
+        processUpdateNote(nota)
+    }
+
+    private suspend fun processUpdateNote(nota: Nota) {
+        withContext(Dispatchers.Default) {
+            noteDao?.update(nota)
+        }
+    }
+
     fun getNotas(): LiveData<List<Nota>>? {
         return noteDao?.list()
     }

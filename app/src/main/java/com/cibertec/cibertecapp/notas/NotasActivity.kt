@@ -28,7 +28,7 @@ class NotasActivity: AppCompatActivity(), NotasAdapter.ItemClickListener {
 
         val fabNuevaNota = findViewById<FloatingActionButton>(R.id.fabNuevaNota)
         fabNuevaNota.setOnClickListener {
-            registerNota()
+            registerNota(null, tipo = 0)
         }
 
         val recyclerNotas = findViewById<RecyclerView>(R.id.recyclerNotas)
@@ -45,11 +45,12 @@ class NotasActivity: AppCompatActivity(), NotasAdapter.ItemClickListener {
 
     }
 
-    fun registerNota() {
+    fun registerNota(nota: Nota?, tipo: Int) {
         val mDialogView = LayoutInflater.from(this)
             .inflate(R.layout.dialog_note, null)
 
-        val titleAlertNota = "Registrar nota"
+        val titleAlertNota = if (tipo == 0) "Registrar" else "Editar"
+
         val mBuilder = AlertDialog.Builder(this)
             .setView(mDialogView)
             .setTitle(titleAlertNota)
@@ -60,6 +61,11 @@ class NotasActivity: AppCompatActivity(), NotasAdapter.ItemClickListener {
         val edtDescNote = mDialogView.findViewById<EditText>(R.id.edtDescNote)
         val btnCreate = mDialogView.findViewById<Button>(R.id.btnCreate)
 
+        if (tipo == 1) {
+            edtTitleNote.setText(nota?.title)
+            edtDescNote.setText(nota?.description)
+        }
+
         btnCreate.setOnClickListener {
             mAlertDialog.dismiss()
 
@@ -67,8 +73,15 @@ class NotasActivity: AppCompatActivity(), NotasAdapter.ItemClickListener {
             val description = edtDescNote.text.toString()
             val date = formatDate(LocalDateTime.now())
 
-            var nota = Nota(title, description, date)
-            notaViewModel.saveNoteWithCoroutines(nota)
+            if (tipo == 0) {
+                var nota = Nota(title, description, date)
+                notaViewModel.saveNoteWithCoroutines(nota)
+            } else {
+                var notaV = Nota(title, description, date)
+                notaV.noteId = nota?.noteId!!
+                notaViewModel.upateNoteWithCoroutines(notaV)
+            }
+
         }
 
     }
@@ -80,7 +93,7 @@ class NotasActivity: AppCompatActivity(), NotasAdapter.ItemClickListener {
     }
 
     override fun onItemClick(nota: Nota) {
-
+        registerNota(nota, tipo = 1)
     }
 
 
