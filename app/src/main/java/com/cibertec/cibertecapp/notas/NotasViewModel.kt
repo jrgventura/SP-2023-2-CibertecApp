@@ -10,7 +10,7 @@ class NotasViewModel (application: Application): AndroidViewModel(application) {
 
     private val repository = NotasRepository(application)
 
-
+    val notas = repository.getNotas()
 
     fun saveNoteWithCoroutines(nota: Nota) {
         viewModelScope.launch {

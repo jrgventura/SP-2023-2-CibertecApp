@@ -7,13 +7,15 @@ import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cibertec.cibertecapp.R
 import com.cibertec.cibertecapp.database.Nota
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-class NotasActivity: AppCompatActivity() {
+class NotasActivity: AppCompatActivity(), NotasAdapter.ItemClickListener {
 
     private lateinit var notaViewModel: NotasViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +30,19 @@ class NotasActivity: AppCompatActivity() {
         fabNuevaNota.setOnClickListener {
             registerNota()
         }
+
+        val recyclerNotas = findViewById<RecyclerView>(R.id.recyclerNotas)
+
+        val adapter = NotasAdapter(this)
+        recyclerNotas.adapter = adapter
+        recyclerNotas.layoutManager = LinearLayoutManager(this)
+
+        notaViewModel.notas?.observe(this){ notas ->
+            notas?.let {
+                adapter.setNotas(notas)
+            }
+        }
+
     }
 
     fun registerNota() {
@@ -64,6 +79,9 @@ class NotasActivity: AppCompatActivity() {
         return date.format(DateTimeFormatter.ofPattern(format))
     }
 
+    override fun onItemClick(nota: Nota) {
+
+    }
 
 
 }
