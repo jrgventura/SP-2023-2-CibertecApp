@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.cibertec.cibertecapp.R
 import com.cibertec.cibertecapp.database.Nota
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -14,9 +15,14 @@ import java.time.format.DateTimeFormatter
 
 class NotasActivity: AppCompatActivity() {
 
+    private lateinit var notaViewModel: NotasViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nota)
+
+        notaViewModel = run {
+            ViewModelProvider(this)[NotasViewModel::class.java]
+        }
 
         val fabNuevaNota = findViewById<FloatingActionButton>(R.id.fabNuevaNota)
         fabNuevaNota.setOnClickListener {
@@ -47,6 +53,7 @@ class NotasActivity: AppCompatActivity() {
             val date = formatDate(LocalDateTime.now())
 
             var nota = Nota(title, description, date)
+            notaViewModel.saveNoteWithCoroutines(nota)
         }
 
     }
