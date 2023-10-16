@@ -12,6 +12,7 @@
         android:layout_height="match_parent"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabCounter"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:src="@drawable/icon_runner_start"
