@@ -9,6 +9,7 @@ import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import com.cibertec.cibertecapp.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -18,10 +19,13 @@ class StepCounterActivity : AppCompatActivity(), SensorEventListener {
     private var sensor: Sensor? = null
     var counter = 0
 
+    private lateinit var textCounter: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_step_counter)
 
+        textCounter = findViewById(R.id.textCounter)
         val fabStart = findViewById<FloatingActionButton>(R.id.fabStart)
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -41,7 +45,10 @@ class StepCounterActivity : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onSensorChanged(p0: SensorEvent?) {
+        val paso = p0?.values?.get(0)
+        counter += paso?.toInt() ?: 0
 
+        textCounter.text = counter.toString()
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
