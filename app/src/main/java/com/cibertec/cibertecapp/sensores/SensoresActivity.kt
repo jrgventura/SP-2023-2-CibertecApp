@@ -7,6 +7,7 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import com.cibertec.cibertecapp.R
 import java.lang.StringBuilder
@@ -19,7 +20,7 @@ class SensoresActivity : AppCompatActivity(), SensorEventListener {
         setContentView(R.layout.activity_sensores)
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        mLight = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)
+        mLight = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY)
         mLight?.also {
             sensorManager.registerListener(this, it,
                 SensorManager.SENSOR_DELAY_NORMAL)
@@ -45,10 +46,12 @@ class SensoresActivity : AppCompatActivity(), SensorEventListener {
 
     // Proporcionar un objecto con los datos tomados por el sensor
     override fun onSensorChanged(p0: SensorEvent?) {
-
+        val values = p0?.values //
+        val lux = values?.get(0)
+        Log.v("VALOR_SENSOR", lux.toString())
     }
 
-    // Proporciona información sensor y su presición
+    // Proporciona información sensor y su precisión
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
 
     }
