@@ -60,7 +60,7 @@ dependencies {
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.3.0")
     implementation("com.squareup.retrofit2:converter-gson:2.3.0")
-    implementation("com.squareup.retrofit2:adapter-rxjava:2.3.0")
+    implementation("com.squareup.retrofit2:adapter-rxjava2:2.3.0")
 
     // RXJava
     implementation("io.reactivex.rxjava2:rxjava:2.1.1")

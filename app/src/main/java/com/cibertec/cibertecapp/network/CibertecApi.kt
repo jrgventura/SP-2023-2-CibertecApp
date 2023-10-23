@@ -8,7 +8,7 @@ import retrofit2.http.POST
 
 interface CibertecApi {
 
-    @POST("/login")
+    @POST("login")
     fun login(@Body loginRequest: LoginRequest): Single<LoginResponse>
 
 }
