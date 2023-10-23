@@ -9,16 +9,25 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.cibertec.cibertecapp.R
 import com.cibertec.cibertecapp.RegisterActivity
 import com.cibertec.cibertecapp.WelcomeActivity
+import com.google.android.material.textfield.TextInputEditText
 import java.util.Arrays
 
 class LoginActivity: AppCompatActivity() {
 
+    private lateinit var viewModel: LoginViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+
+        val edtEmail = findViewById<TextInputEditText>(R.id.edtEmail)
+        val edtPassword = findViewById<TextInputEditText>(R.id.edtPassword)
 
         val btnRegister = findViewById<Button>(R.id.btnRegister)
         btnRegister.setOnClickListener {
@@ -27,7 +36,26 @@ class LoginActivity: AppCompatActivity() {
 
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         btnLogin.setOnClickListener {
-            startActivity(Intent(this, WelcomeActivity::class.java))
+
+            val email = edtEmail.text.toString()
+            val pass = edtPassword.text.toString()
+            viewModel.login(email, pass)
+
+        }
+
+        observerViewModel()
+    }
+
+
+    private fun observerViewModel() {
+
+        viewModel.userLoginService.observe(this) {
+            if (it) {
+                startActivity(Intent(this, WelcomeActivity::class.java))
+            } else {
+                Toast.makeText(this, "Verifica tus credenciales",
+                    Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
