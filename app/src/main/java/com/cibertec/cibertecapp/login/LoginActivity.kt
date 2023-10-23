@@ -58,6 +58,11 @@ class LoginActivity: AppCompatActivity() {
             }
         }
 
+        viewModel.userUserListService.observe(this) {
+            var listaUsuarios = it
+
+        }
+
     }
 
     // Alertas
