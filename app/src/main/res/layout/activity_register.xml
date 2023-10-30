@@ -46,6 +46,7 @@
         android:layout_height="60dp" >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textEmailAddress"
@@ -60,6 +61,7 @@
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPass"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textPassword"
@@ -81,6 +83,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:text="@string/btn_register"
         android:layout_marginTop="20dp"

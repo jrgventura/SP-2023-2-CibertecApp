@@ -11,7 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.cibertec.cibertecapp.R
-import com.cibertec.cibertecapp.RegisterActivity
+import com.cibertec.cibertecapp.registro.RegisterActivity
 import com.cibertec.cibertecapp.WelcomeActivity
 import com.google.android.material.textfield.TextInputEditText
 import java.util.Arrays
