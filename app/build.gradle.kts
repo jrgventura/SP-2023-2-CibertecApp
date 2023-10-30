@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -65,6 +66,11 @@ dependencies {
     // RXJava
     implementation("io.reactivex.rxjava2:rxjava:2.1.1")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
+
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.4.1"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-auth-ktx")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
