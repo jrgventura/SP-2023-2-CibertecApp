@@ -23,7 +23,8 @@ class LoginViewModel: ViewModel() {
     val userUserListService = MutableLiveData<ArrayList<User>>()
 
     fun login(email: String, pass: String) {
-        loginService(email, pass)
+        // loginService(email, pass)
+        loginFirebase(email, pass)
     }
 
     private fun loginService(email: String, pass: String) {
