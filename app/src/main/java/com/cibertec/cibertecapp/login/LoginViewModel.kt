@@ -1,16 +1,20 @@
 package com.cibertec.cibertecapp.login
 
+import android.app.Activity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.cibertec.cibertecapp.network.response.LoginResponse
 import com.cibertec.cibertecapp.network.response.User
 import com.cibertec.cibertecapp.network.response.UsersResponse
+import com.google.firebase.auth.FirebaseAuth
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
 class LoginViewModel: ViewModel() {
+
+    private lateinit var authFirebase: FirebaseAuth
 
     private val repository = LoginRepository()
     private val disposable = CompositeDisposable()
@@ -61,6 +65,16 @@ class LoginViewModel: ViewModel() {
 
                 })
         )
+    }
+
+    private fun loginFirebase(email: String, pass: String) {
+        authFirebase = FirebaseAuth.getInstance()
+        authFirebase.signInWithEmailAndPassword(email, pass)
+            .addOnCompleteListener(Activity()) { task ->
+
+                userLoginService.value = task.isSuccessful
+
+            }
     }
 
 }
