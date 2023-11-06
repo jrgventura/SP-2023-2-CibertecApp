@@ -21,13 +21,18 @@ class RegisterActivity: AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
 
+        val edtNombre =  findViewById<TextInputEditText>(R.id.edtNombres)
+        val edtApellidos =  findViewById<TextInputEditText>(R.id.edtApellidos)
         val edtEmail = findViewById<TextInputEditText>(R.id.edtEmail)
         val edtPass = findViewById<TextInputEditText>(R.id.edtPass)
         val btnRegister = findViewById<Button>(R.id.btnRegister)
+
         btnRegister.setOnClickListener {
+            val nombre = edtNombre.text.toString()
+            val apellidos = edtApellidos.text.toString()
             val email = edtEmail.text.toString()
             val pass = edtPass.text.toString()
-            viewModel.register(email, pass)
+            viewModel.register(nombre, apellidos, email, pass)
         }
         observerViewModel()
     }

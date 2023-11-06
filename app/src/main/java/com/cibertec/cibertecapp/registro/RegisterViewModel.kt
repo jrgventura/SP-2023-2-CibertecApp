@@ -11,7 +11,8 @@ class RegisterViewModel: ViewModel() {
 
     val userRegisterService = MutableLiveData<Boolean>()
 
-    fun register(email: String, pass: String) {
+    fun register(nombre: String, apellidos: String,
+                 email: String, pass: String) {
         registerFirebase(email, pass)
     }
 
@@ -21,6 +22,11 @@ class RegisterViewModel: ViewModel() {
             .addOnCompleteListener(Activity()) { task ->
                 userRegisterService.value = task.isSuccessful
             }
+    }
+
+    private fun registerFirestore(nombre: String, apellidos: String, correo: String,
+                                  uid: String) {
+
     }
 
 }
