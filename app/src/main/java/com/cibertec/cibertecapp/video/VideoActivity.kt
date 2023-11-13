@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.MediaController
+import android.widget.Toast
 import android.widget.VideoView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -67,7 +68,13 @@ class VideoActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if (requestCode == READ_STORAGE_PERMISSION_REQUEST) {
+            if(grantResults.isNotEmpty() && grantResults[0]
+                == PackageManager.PERMISSION_GRANTED) {
 
+            } else {
+                Toast.makeText(this, "Permiso denegado",
+                    Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
