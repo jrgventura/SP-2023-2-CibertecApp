@@ -42,6 +42,7 @@ class VideoActivity : AppCompatActivity() {
         btnVideo.setOnClickListener {
             if (checkPermission()) {
                 // acceder a videos
+                videoLauncher.launch("video/*")
             } else {
                 // pedir permiso
                 requestPermission()
@@ -72,7 +73,7 @@ class VideoActivity : AppCompatActivity() {
         if (requestCode == READ_STORAGE_PERMISSION_REQUEST) {
             if(grantResults.isNotEmpty() && grantResults[0]
                 == PackageManager.PERMISSION_GRANTED) {
-
+                videoLauncher.launch("video/*")
             } else {
                 Toast.makeText(this, "Permiso denegado",
                     Toast.LENGTH_SHORT).show()
