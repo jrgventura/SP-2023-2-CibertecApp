@@ -17,7 +17,6 @@ import com.cibertec.cibertecapp.R
 class VideoActivity : AppCompatActivity() {
 
     private val READ_STORAGE_PERMISSION_REQUEST = 50
-    private val READ_STORAGE_PERMISSION_REQUES2T = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
