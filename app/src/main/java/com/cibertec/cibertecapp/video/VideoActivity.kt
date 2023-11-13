@@ -1,5 +1,6 @@
 package com.cibertec.cibertecapp.video
 
+import android.app.Instrumentation.ActivityResult
 import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import android.widget.Button
 import android.widget.MediaController
 import android.widget.Toast
 import android.widget.VideoView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.cibertec.cibertecapp.R
@@ -77,6 +79,24 @@ class VideoActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private val videoLauncher = registerForActivityResult(
+        ActivityResultContracts.GetContent()) { uri: Uri? ->
+        uri?.let {
+            playVideo(uri)
+        }
+    }
+
+    private fun playVideo(uri: Uri) {
+        val videoView = findViewById<VideoView>(R.id.videoView)
+
+        val mediaController = MediaController(this)
+        mediaController.setAnchorView(videoView)
+        videoView.setMediaController(mediaController)
+
+        videoView.setVideoURI(uri)
+        videoView.start()
     }
 
 }
