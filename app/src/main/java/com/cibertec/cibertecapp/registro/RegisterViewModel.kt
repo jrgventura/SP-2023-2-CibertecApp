@@ -13,14 +13,23 @@ class RegisterViewModel: ViewModel() {
 
     fun register(nombre: String, apellidos: String,
                  email: String, pass: String) {
-        registerFirebase(email, pass)
+        registerFirebase(nombre, apellidos, email, pass)
     }
 
-    private fun registerFirebase(email: String, pass: String) {
+    private fun registerFirebase(nombre: String, apellidos: String,
+                                 email: String, pass: String) {
         authFirebase = FirebaseAuth.getInstance()
         authFirebase.createUserWithEmailAndPassword(email, pass)
             .addOnCompleteListener(Activity()) { task ->
-                userRegisterService.value = task.isSuccessful
+                if (task.isSuccessful) {
+                    val uid = task.result?.user?.uid
+                    if (uid != null) {
+                        registerFirestore(nombre, apellidos,
+                            email, uid)
+                    }
+                } else {
+                    userRegisterService.value = false
+                }
             }
     }
 
