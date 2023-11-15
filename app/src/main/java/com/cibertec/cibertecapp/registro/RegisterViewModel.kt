@@ -43,7 +43,6 @@ class RegisterViewModel: ViewModel() {
             .addOnCompleteListener(Activity()) { task ->
                 userRegisterService.value = task.isSuccessful
             }
-
     }
 
 }

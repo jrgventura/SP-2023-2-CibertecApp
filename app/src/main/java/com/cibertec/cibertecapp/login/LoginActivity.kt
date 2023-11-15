@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.cibertec.cibertecapp.R
 import com.cibertec.cibertecapp.registro.RegisterActivity
-import com.cibertec.cibertecapp.WelcomeActivity
+import com.cibertec.cibertecapp.noticias.WelcomeActivity
 import com.google.android.material.textfield.TextInputEditText
 import java.util.Arrays
 

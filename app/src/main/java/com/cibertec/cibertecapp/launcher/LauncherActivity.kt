@@ -5,9 +5,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.cibertec.cibertecapp.R
-import com.cibertec.cibertecapp.WelcomeActivity
+import com.cibertec.cibertecapp.noticias.WelcomeActivity
 import com.cibertec.cibertecapp.login.LoginActivity
-import com.cibertec.cibertecapp.login.LoginViewModel
 
 class LauncherActivity: AppCompatActivity() {
 

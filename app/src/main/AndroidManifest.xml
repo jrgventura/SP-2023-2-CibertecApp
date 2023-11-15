@@ -20,11 +20,7 @@
         <activity
             android:name=".mapas.MapasActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".video.VideoActivity"
@@ -34,11 +30,19 @@
         <activity
             android:name=".sensores.StepCounterActivity"
             android:exported="false" />
+
         <activity
             android:name=".launcher.LauncherActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".login.LoginActivity" />
-        <activity android:name=".WelcomeActivity" />
+        <activity android:name=".noticias.WelcomeActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".registro.RegisterActivity" />
         <activity android:name=".MenuActivity" />

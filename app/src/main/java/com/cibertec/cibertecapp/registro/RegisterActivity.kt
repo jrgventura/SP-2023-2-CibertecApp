@@ -1,14 +1,11 @@
 package com.cibertec.cibertecapp.registro
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.cibertec.cibertecapp.R
-import com.cibertec.cibertecapp.WelcomeActivity
-import com.cibertec.cibertecapp.login.LoginViewModel
 import com.google.android.material.textfield.TextInputEditText
 
 class RegisterActivity: AppCompatActivity() {

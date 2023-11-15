@@ -1,4 +1,4 @@
-package com.cibertec.cibertecapp
+package com.cibertec.cibertecapp.noticias
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 class NoticiasAdapter(val mItemClickListener: ItemClickNoticia):
     RecyclerView.Adapter<NoticiasViewHolder>() {
 
-    private var noticiasList = emptyList<Noticia>()
+    private var noticiasList = emptyList<NoticiaFirebase>()
 
-    fun setNoticias(noticias: List<Noticia>) {
+    fun setNoticias(noticias: List<NoticiaFirebase>) {
         this.noticiasList = noticias
         this.notifyDataSetChanged()
     }
@@ -25,7 +25,7 @@ class NoticiasAdapter(val mItemClickListener: ItemClickNoticia):
     }
 
     override fun onBindViewHolder(holder: NoticiasViewHolder, position: Int) {
-        val noticia: Noticia = noticiasList[position]
+        val noticia: NoticiaFirebase = noticiasList[position]
         holder.bind(noticia)
 
         holder.itemView.setOnClickListener {
@@ -35,7 +35,7 @@ class NoticiasAdapter(val mItemClickListener: ItemClickNoticia):
 
     // Evento
     interface ItemClickNoticia {
-        fun onItemClick(noticia: Noticia)
+        fun onItemClick(noticia: NoticiaFirebase)
     }
 
 
