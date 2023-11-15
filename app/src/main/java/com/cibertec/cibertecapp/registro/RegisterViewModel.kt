@@ -4,10 +4,12 @@ import android.app.Activity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterViewModel: ViewModel() {
 
     private lateinit var authFirebase: FirebaseAuth
+    private lateinit var firestore:  FirebaseFirestore
 
     val userRegisterService = MutableLiveData<Boolean>()
 
@@ -35,7 +37,19 @@ class RegisterViewModel: ViewModel() {
 
     private fun registerFirestore(nombre: String, apellidos: String, correo: String,
                                   uid: String) {
+        val usuario = UsuarioFirestore(nombre, apellidos, correo)
+        firestore = FirebaseFirestore.getInstance()
+        firestore.collection("usuarios").document(uid).set(usuario)
+            .addOnCompleteListener(Activity()) { task ->
+                userRegisterService.value = task.isSuccessful
+            }
 
     }
 
 }
+
+data class UsuarioFirestore (
+    var nombre: String,
+    var apellidos: String,
+    var correo: String
+)
