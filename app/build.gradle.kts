@@ -75,6 +75,9 @@ dependencies {
 
     // Google Maps
     implementation("com.google.android.gms:play-services-maps:18.2.0")
+    
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.cibertec.cibertecapp.R
 
 class NoticiasViewHolder (inflater: LayoutInflater, parent: ViewGroup):
@@ -25,7 +27,18 @@ class NoticiasViewHolder (inflater: LayoutInflater, parent: ViewGroup):
     fun bind(noticia: NoticiaFirebase) {
         textTitle?.text = noticia.title
         textDescription?.text = noticia.description
-        // imgPortada?.setImageResource(noticia.image)
+
+        val options = RequestOptions()
+            .placeholder(R.drawable.logo)
+            .error(R.drawable.logo)
+
+        imgPortada?.let {
+            Glide.with(it)
+                .setDefaultRequestOptions(options)
+                .load(noticia.image)
+                .into(it)
+        }
+
     }
 
 }
