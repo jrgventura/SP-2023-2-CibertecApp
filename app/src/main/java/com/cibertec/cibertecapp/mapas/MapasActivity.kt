@@ -3,6 +3,7 @@ package com.cibertec.cibertecapp.mapas
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.cibertec.cibertecapp.R
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
@@ -33,6 +34,11 @@ class MapasActivity : AppCompatActivity(), OnMapReadyCallback {
             MarkerOptions()
                 .position(positionMarker)
                 .title("Ciudad de Trujillo")
+        )
+
+        map.animateCamera(
+            CameraUpdateFactory.newLatLngZoom(positionMarker, 18f),
+            4000, null
         )
 
     }
