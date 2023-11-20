@@ -41,5 +41,8 @@ class MapasActivity : AppCompatActivity(), OnMapReadyCallback {
             4000, null
         )
 
+        map.uiSettings.isZoomControlsEnabled = true
+        map.uiSettings.isRotateGesturesEnabled = false
+
     }
 }
